@@ -4,14 +4,20 @@ export class MovieModel {
   constructor(
     public id: number,
     public title: string,
-    public year: number,
+    public genreId: number[],
+    public overview: string,   
+    public releaseDate: Date,    
+    public posterPath: string,
   ) {}
 
   static fromJson(json: MovieInterface): MovieModel {
     return new MovieModel(
       json.id,
       json.title,
-      json.year,
+      json.genre_ids,
+      json.overview,
+      json.release_date,
+      json.poster_path,    
     );
   }
 
@@ -19,7 +25,10 @@ export class MovieModel {
     return {
       id: this.id,
       title: this.title,
-      year: this.year,
+      genre_ids: this.genreId,
+      overview: this.overview,
+      release_date: this.releaseDate,
+      poster_path: this.posterPath,
     };
   }
 }
