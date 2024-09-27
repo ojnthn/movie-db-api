@@ -8,7 +8,7 @@ export class MovieModel {
     public overview: string,   
     public releaseDate: Date,    
     public posterPath: string,
-  ) {}
+  )  {}
 
   static fromJson(json: MovieInterface): MovieModel {
     return new MovieModel(

@@ -1,14 +1,18 @@
 import { RestClientImpl } from "../../../../../../core/utils/rest_client/rest_client.impl";
-import { MovieListModel } from "../../model/movie_list_model";
+import { MovieListEntity } from "../../../../domain/entities/movie_list_entity";
 import { MovieListDatasource } from "./movie_list_datasource";
 
 export class MovieListDatasourceImpl implements MovieListDatasource {
-  async getMovies(): Promise<MovieListModel> {
-
+  async getMovies(): Promise<MovieListEntity> {
     const restClient = new RestClientImpl();
-    const movieJson = await restClient.get('/movie/popular');
-    
-    return MovieListModel.fromJson(movieJson);
+
+    try{
+      const movieJson = await restClient.get('/movie/popular');
+      
+      return MovieListEntity.fromJson(movieJson);
+      
+    } catch(error) {
+      throw error;
+    }    
   }
 }
-

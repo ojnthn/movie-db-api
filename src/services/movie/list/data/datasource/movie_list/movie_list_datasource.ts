@@ -1,5 +1,5 @@
-import { MovieListModel } from "../../model/movie_list_model";
+import { MovieListEntity } from "../../../../domain/entities/movie_list_entity";
 
 export abstract class MovieListDatasource {
-  abstract getMovies(): Promise<MovieListModel>;
+  abstract getMovies(): Promise<MovieListEntity>;
 }
