@@ -1,11 +1,11 @@
 import express from 'express';
 import { MovieListDatasource } from './services/movie/list/data/datasource/movie_list/movie_list_datasource';
 import { MovieListDatasourceImpl } from './services/movie/list/data/datasource/movie_list/movie_list_datasource_impl';
+import { env } from './core/config/env';
 
 const app = express();
 
-const port = 3000;
-
+const port = env.port;
 
 app.get('/movie/list', (req, res) => {
   const movieListDatasource: MovieListDatasource = new MovieListDatasourceImpl();
