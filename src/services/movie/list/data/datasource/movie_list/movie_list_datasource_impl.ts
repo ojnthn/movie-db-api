@@ -4,11 +4,15 @@ import { MovieListDatasource } from "./movie_list_datasource";
 
 export class MovieListDatasourceImpl implements MovieListDatasource {
   async getMovies(): Promise<MovieListModel> {
-
     const restClient = new RestClientImpl();
-    const movieJson = await restClient.get('/movie/popular');
-    
-    return MovieListModel.fromJson(movieJson);
+
+    try{
+      const movieJson = await restClient.get('/movie/popular');
+      
+      return MovieListModel.fromJson(movieJson);
+      
+    } catch(error) {
+      throw error;
+    }    
   }
 }
-
