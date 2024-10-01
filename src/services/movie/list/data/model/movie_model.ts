@@ -1,7 +1,7 @@
 import { MovieInterface } from "../../../../../core/shared/interface/movie/movie_interface";
 import { MovieEntity } from "../../../domain/entities/movie_entity";
 
-export class MovieModel extends MovieEntity {
+export class MovieModel {
   constructor(
     public id: number,
     public title: string,
