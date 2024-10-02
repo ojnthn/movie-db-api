@@ -10,11 +10,12 @@ app.listen(env.port, () => {
 
 app.get('/movie/list', (req, res) => {
   movieListUsecase.get()
-    .then((movieListEntity: MovieListEntity | MovieListFailure) => {
-      if (movieListEntity instanceof MovieListEntity) {
-        res.send(movieListEntity.toJson());
-      } else {
-        res.status(500).send(movieListEntity.toString());
+    .then((response: MovieListEntity | MovieListFailure) => {
+      if (response instanceof MovieListFailure) {
+        res.status(500).send(response.toString());
+        return;
       }
+
+      res.send(response.toJson());
     })
 });
