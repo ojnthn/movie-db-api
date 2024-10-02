@@ -1,4 +1,4 @@
-import { MovieInterface } from "../../../../core/shared/interface/movie/movie_interface";
+import { MovieInterface } from "../../../../../core/shared/interface/movie/movie_interface";
 import { MovieEntity } from "./movie_entity";
 
 export class MovieListEntity {
