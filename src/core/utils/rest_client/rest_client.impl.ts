@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { env } from "../../config/env";
 import { RestClient } from "./rest_client";
+import { Exception } from "../../errors/exception";
 
 export class RestClientImpl implements RestClient {
     private apiKey: string;
@@ -12,11 +13,17 @@ export class RestClientImpl implements RestClient {
     }
     async get(url: string): Promise<any> {
         try {
-            const { data } = await axios.get(`${this.baseUrl}${url}?api_key=${this.apiKey}`);
+
+            const { data } = await axios.get(`${this.baseUrl}${url}?api_key=${this.apiKey}`);            
 
             return data.results;
         } catch (error) {
-            throw error;
+            if (error instanceof AxiosError) {
+                
+                throw error.response?.data;
+            }
+            
+            throw new Exception("Unknown error");
         }            
     }        
 }

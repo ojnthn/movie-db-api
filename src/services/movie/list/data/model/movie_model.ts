@@ -1,4 +1,5 @@
 import { MovieInterface } from "../../../../../core/shared/interface/movie/movie_interface";
+import { MovieEntity } from "../../../domain/entities/movie_entity";
 
 export class MovieModel {
   constructor(
@@ -8,7 +9,7 @@ export class MovieModel {
     public overview: string,   
     public releaseDate: Date,    
     public posterPath: string,
-  ) {}
+  )  {}
 
   static fromJson(json: MovieInterface): MovieModel {
     return new MovieModel(

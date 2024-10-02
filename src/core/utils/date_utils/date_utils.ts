@@ -1,4 +1,4 @@
 export abstract class DateUtils {
-    abstract toDate(): Date;
+    abstract toDate(date: string): Date;
 
 }
