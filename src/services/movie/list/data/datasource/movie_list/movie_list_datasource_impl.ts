@@ -10,7 +10,7 @@ export class MovieListDatasourceImpl implements MovieListDatasource {
     try{
       const movieJson = await restClient.get('/movie/popular');
       
-      return MovieListModel.fromJson(movieJson);
+      return MovieListModel.fromJson(movieJson.results);
       
     } catch(error) {
       if (error instanceof Error) {

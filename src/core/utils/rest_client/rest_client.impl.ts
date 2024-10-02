@@ -15,8 +15,9 @@ export class RestClientImpl implements RestClient {
         try {
 
             const { data } = await axios.get(`${this.baseUrl}${url}?api_key=${this.apiKey}`);            
+            
+            return data;
 
-            return data.results;
         } catch (error) {
             if (error instanceof AxiosError) {
                 
